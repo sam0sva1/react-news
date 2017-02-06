@@ -9,15 +9,25 @@ var react_news = [
 	},
 	{
 		author: 'Дима Юшкин',
-		text: 'Только недавно начал писать на фреймвокре реакт. Очень нравиться стили в нет писать.'
+		text: 'Только недавно начал писать на фреймвокре реакт. Очень нравиться стили в ней писать.'
 	}
 ];
 
 var News = React.createClass({
 	render: function() {
+		var data = this.props.data;
+		var newsPack = data.map(function(item, index) {
+			return (
+				<div key={index}>
+					<p className="news__author">{item.author}:</p>
+					<p className="news__text">{item.text}</p>
+				</div>
+			)
+		});
 		return (
 			<div className="news">
-				К сожалению, новостей нет.
+				{newsPack}
+				{/*К сожалению, новостей нет.*/}
 			</div>
 		);
 	}
