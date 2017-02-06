@@ -16,19 +16,27 @@ var react_news = [
 var News = React.createClass({
 	render: function() {
 		var data = this.props.data;
-		var newsPack = data.map(function(item, index) {
-			return (
-				<div key={index}>
-					<p className="news__author">{item.author}:</p>
-					<p className="news__text">{item.text}</p>
-				</div>
-			)
-		});
+		var newsPack;
+
+		if (data.length > 0) {
+			newsPack = data.map(function(item, index) {
+				return (
+					<div key={index}>
+						<p className="news__author">{item.author}:</p>
+						<p className="news__text">{item.text}</p>
+					</div>
+				)
+			});
+			newsPack.push(<strong>Всего новостей: {data.length}</strong>);
+		} else {
+			newsPack = <p>К сожалению новостей нет</p>;
+		}
+
 		return (
 			<div className="news">
 				{newsPack}
 				{/*К сожалению, новостей нет.*/}
-				<div>Количество новостей: {data.length}</div> 
+				 
 			</div>
 		);
 	}
