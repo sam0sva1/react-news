@@ -28,6 +28,7 @@ var News = React.createClass({
 			<div className="news">
 				{newsPack}
 				{/*К сожалению, новостей нет.*/}
+				<div>Количество новостей: {data.length}</div> 
 			</div>
 		);
 	}
