@@ -18,10 +18,10 @@ var react_news = [
 
 var Article = React.createClass({
 	propTypes: {
-		key: React.PropTypes.any.isRequired,
 		item: React.PropTypes.shape({
 			author: React.PropTypes.string.isRequired,
-			text: React.PropTypes.string.isRequired
+			text: React.PropTypes.string.isRequired,
+			bigText: React.PropTypes.string.isRequired
 		})
 	},
 	getInitialState: function() {
@@ -30,14 +30,16 @@ var Article = React.createClass({
 		};
 	},
 	render: function () {
-		var index = this.props.key;
-		var article = this.props.item;
+		var author = this.props.item.author,
+			text = this.props.item.text,
+			bigText = this.props.item.bigText,
+			visible = this.state.visible;
 		return (
-			<div className="news" key={index}>
-				<p className="news__author">{article.author}:</p>
-				<p className="news__text">{article.text}</p>
-				<a href="#" className="news__readmore">Подробнее</a>
-				<p className="news__big-text">{article.bigText}</p>
+			<div className="news" >
+				<p className="news__author">{author}:</p>
+				{ !visible && <p className="news__text">{text}</p> }
+				{ visible && <p className="news__big-text">{bigText}</p> }
+				<a href="#" className="news__readmore">{visible ? 'Скрыть' : 'Подробнее'}</a>
 			</div>
 		)
 	}
@@ -53,9 +55,9 @@ var News = React.createClass({
 		var newsPack;
 
 		if (data.length > 0) {
-			newsPack = data.map(function(item, index) {
+			newsPack = data.map(function(item) {
 				return (
-					<Article key={index} item={item} />
+					<Article key={Math.random()} item={item} />
 				)
 			});
 			newsPack.push(<strong className="news__count">Всего новостей: {data.length}</strong>);
