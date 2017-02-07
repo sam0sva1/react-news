@@ -37,7 +37,7 @@ var News = React.createClass({
 					<Article key={index} item={item} />
 				)
 			});
-			newsPack.push(<strong>Всего новостей: {data.length}</strong>);
+			newsPack.push(<strong className="news__count">Всего новостей: {data.length}</strong>);
 		} else {
 			newsPack = <p>К сожалению новостей нет</p>;
 		}
