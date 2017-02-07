@@ -13,6 +13,19 @@ var react_news = [
 	}
 ];
 
+var Article = React.createClass({
+	render: function () {
+		var index = this.props.key;
+		var article = this. props.item;
+		return (
+			<div className="news" key={index}>
+				<p className="news__author">{article.author}:</p>
+				<p className="news__text">{article.text}</p>
+			</div>
+		)
+	}
+});
+
 var News = React.createClass({
 	render: function() {
 		var data = this.props.data;
@@ -21,10 +34,7 @@ var News = React.createClass({
 		if (data.length > 0) {
 			newsPack = data.map(function(item, index) {
 				return (
-					<div key={index}>
-						<p className="news__author">{item.author}:</p>
-						<p className="news__text">{item.text}</p>
-					</div>
+					<Article key={index} item={item} />
 				)
 			});
 			newsPack.push(<strong>Всего новостей: {data.length}</strong>);
@@ -42,23 +52,12 @@ var News = React.createClass({
 	}
 });
 
-var Comments = React.createClass({
-	render: function() {
-		return (
-			<div className="comments">
-				Нет новостей - комментировать нечего.
-			</div>
-		);
-	}
-});
-
 var App = React.createClass({
 	render: function() {
 		return (
 			<div className="app">
 				Всем привет, я компонент App!
 				<News data={react_news} />
-				<Comments />
 			</div>
 		)
 	}
