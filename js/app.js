@@ -29,6 +29,11 @@ var Article = React.createClass({
 			visible: false
 		};
 	},
+	onReadmoreClickHandler: function(event) {
+		event.preventDefault();
+		var visibility = this.state.visible;
+		this.setState({ visible: !visibility });
+	},
 	render: function () {
 		var author = this.props.item.author,
 			text = this.props.item.text,
@@ -39,7 +44,12 @@ var Article = React.createClass({
 				<p className="news__author">{author}:</p>
 				{ !visible && <p className="news__text">{text}</p> }
 				{ visible && <p className="news__big-text">{bigText}</p> }
-				<a href="#" className="news__readmore">{visible ? 'Скрыть' : 'Подробнее'}</a>
+				<a
+					href="#"
+					onClick={this.onReadmoreClickHandler}
+					className="news__readmore">
+					{visible ? 'Скрыть' : 'Подробнее'}
+				</a>
 			</div>
 		)
 	}
