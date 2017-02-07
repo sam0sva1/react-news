@@ -45,8 +45,6 @@ var News = React.createClass({
 		return (
 			<div className="news">
 				{newsPack}
-				{/*К сожалению, новостей нет.*/}
-				 
 			</div>
 		);
 	}
@@ -56,7 +54,7 @@ var App = React.createClass({
 	render: function() {
 		return (
 			<div className="app">
-				Всем привет, я компонент App!
+				<h3>Новости React</h3>
 				<News data={react_news} />
 			</div>
 		)
