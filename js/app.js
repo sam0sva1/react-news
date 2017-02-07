@@ -24,6 +24,11 @@ var Article = React.createClass({
 			text: React.PropTypes.string.isRequired
 		})
 	},
+	getInitialState: function() {
+		return {
+			visible: false
+		};
+	},
 	render: function () {
 		var index = this.props.key;
 		var article = this.props.item;
