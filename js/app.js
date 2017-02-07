@@ -14,9 +14,16 @@ var react_news = [
 ];
 
 var Article = React.createClass({
+	propTypes: {
+		key: React.PropTypes.any.isRequired,
+		item: React.PropTypes.shape({
+			author: React.PropTypes.string.isRequired,
+			text: React.PropTypes.string.isRequired
+		})
+	},
 	render: function () {
 		var index = this.props.key;
-		var article = this. props.item;
+		var article = this.props.item;
 		return (
 			<div className="news" key={index}>
 				<p className="news__author">{article.author}:</p>
