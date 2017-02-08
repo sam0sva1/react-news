@@ -84,23 +84,55 @@ var News = React.createClass({
 });
 
 var Add = React.createClass({
+	getInitialState: function() {
+		return {
+			author: null,
+			text: null,
+			checked: false,
+			button: null
+		}
+	},
+	onCheckerChangeHandler: function(e) {
+		this.setState({
+			checked: !this.state.checked
+		});
+	},
+	onSubmitClickHandler: function(e) {
+		console.log(this.state.author.value, '\n', this.state.text.value);
+	},
 	render: function() {
+		var state = this.state;
 		return (
 			<form className="adding">
 				<input
 					className="adding__author"
 					type="text"
+					ref={function(author) {
+						state.author = author
+					}}
 					placeholder="Автор">
 				</input>
 				<textarea
 					className="adding__text"
 					placeholder="Текст новости"
+					ref={function(newsText) {
+						state.text = newsText;
+					}}
 				></textarea>
 				<label className='adding__checkers'>
-					<input type='checkbox' defaultChecked={false} ref='checkrule' />Я согласен с правилами
+					<input
+						type='checkbox'
+						defaultChecked={false}
+						onChange={this.onCheckerChangeHandler}
+				/>Я согласен с правилами
 				</label>
 				<button
-					className="adding__button">
+					className="adding__button"
+					disabled={!state.checked}
+					ref={function(btn) {
+						state.button = btn
+					}}
+					onClick={this.onSubmitClickHandler}>
 					Показать
 				</button>
 			</form>
