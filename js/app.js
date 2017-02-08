@@ -84,25 +84,17 @@ var News = React.createClass({
 });
 
 var TestInput = React.createClass({
-	getInitialState: function() {
-		return {
-			inputValue: ''
-		}
-	},
-	onChangeHandler: function(e) {
-		this.setState({ inputValue: e.target.value });
-	},
 	onClickHandler: function(e) {
-		console.log(this.state.inputValue);
+		console.log(this.refs.testInput);
 	},
 	render: function() {
 		return (
 			<div className="input">
 				<input
 					className="input__field"
-					value={this.state.inputValue}
-					onChange={this.onChangeHandler}
+					defautlValue=""
 					placeholder="Введите значение"
+					ref="testInput"
 				/>
 				<button
 					className="input__button"
