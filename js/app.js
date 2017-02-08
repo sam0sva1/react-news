@@ -83,40 +83,37 @@ var News = React.createClass({
 	}
 });
 
-var TestInput = React.createClass({
-	componentDidMount: function() {
-		//console.log(ReactDOM.findDOMNode(this.refs.testInput).focus());
-	},
-	onClickHandler: function(e) {
-		console.log(this.refs.testInput);
-	},
+var Add = React.createClass({
 	render: function() {
 		return (
-			<div className="input">
+			<form className="adding">
 				<input
-					className="input__field"
-					defautlValue=""
-					placeholder="Введите значение"
-					ref={function(input) {
-						input.focus()
-					}}
-				/>
+					className="adding__author"
+					type="text"
+					placeholder="Автор">
+				</input>
+				<textarea
+					className="adding__text"
+					placeholder="Текст новости"
+				></textarea>
+				<label className='adding__checkers'>
+					<input type='checkbox' defaultChecked={false} ref='checkrule' />Я согласен с правилами
+				</label>
 				<button
-					className="input__button"
-					onClick={this.onClickHandler}>
-					Отправить
+					className="adding__button">
+					Показать
 				</button>
-			</div>
-		);
+			</form>
+		)
 	}
-});
+})
 
 var App = React.createClass({
 	render: function() {
 		return (
 			<div className="app">
 				<h3>Новости React</h3>
-				<TestInput />
+				<Add />
 				<News data={react_news} />
 			</div>
 		)
