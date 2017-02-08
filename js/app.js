@@ -84,9 +84,21 @@ var News = React.createClass({
 });
 
 var TestInput = React.createClass({
+	getInitialState: function() {
+		return {
+			inputValue: ''
+		}
+	},
+	onChangeHandler: function(e) {
+		this.setState({ inputValue: e.target.value });
+	},
 	render: function() {
 		return (
-			<input className="test-input" value="введите значение" />
+			<input
+				className="test-input"
+				value={this.state.inputValue}
+				onChange={this.onChangeHandler}
+				placeholder="Введите значение"/>
 		);
 	}
 });
