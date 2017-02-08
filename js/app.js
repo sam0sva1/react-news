@@ -84,6 +84,9 @@ var News = React.createClass({
 });
 
 var TestInput = React.createClass({
+	componentDidMount: function() {
+		//console.log(ReactDOM.findDOMNode(this.refs.testInput).focus());
+	},
 	onClickHandler: function(e) {
 		console.log(this.refs.testInput);
 	},
@@ -94,7 +97,9 @@ var TestInput = React.createClass({
 					className="input__field"
 					defautlValue=""
 					placeholder="Введите значение"
-					ref="testInput"
+					ref={function(input) {
+						input.focus()
+					}}
 				/>
 				<button
 					className="input__button"
