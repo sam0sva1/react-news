@@ -92,13 +92,24 @@ var TestInput = React.createClass({
 	onChangeHandler: function(e) {
 		this.setState({ inputValue: e.target.value });
 	},
+	onClickHandler: function(e) {
+		console.log(this.state.inputValue);
+	},
 	render: function() {
 		return (
-			<input
-				className="test-input"
-				value={this.state.inputValue}
-				onChange={this.onChangeHandler}
-				placeholder="Введите значение"/>
+			<div className="input">
+				<input
+					className="input__field"
+					value={this.state.inputValue}
+					onChange={this.onChangeHandler}
+					placeholder="Введите значение"
+				/>
+				<button
+					className="input__button"
+					onClick={this.onClickHandler}>
+					Отправить
+				</button>
+			</div>
 		);
 	}
 });
