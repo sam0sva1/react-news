@@ -31,3 +31,30 @@ p {
 .input__field {
   margin: 0 5px 5px 0;
 }
+.adding {
+  margin: 0 5px 5px 0;
+  width: 210px;
+  border: 1px dashed rgba(0, 89, 181, 0.82);
+  padding: 5px;
+}
+.adding__author, .adding__text, .adding__button, .adding__checker {
+  display: block;
+  margin: 0 0 5px 0;
+  padding: 5px;
+  width: 94%;
+  border: 1px solid rgba(0, 89, 181, 0.82);
+}
+.adding__checker {
+  border: none;
+  font-size: 12px;
+}
+.adding__button {
+  box-sizing: content-box;
+  color: #FFF;
+  text-transform: uppercase;
+  background: #007DDC;
+}
+.adding__button:disabled {
+  background: #CCC;
+  color: #999;
+}
